@@ -1,0 +1,4 @@
+check process pdns with pidfile /var/run/pdns.pid
+       start program = "/etc/init.d/pdns start"
+       stop program  = "/etc/init.d/pdns stop"
+       if failed host 127.0.0.1 port 53 use type udp protocol dns then restart
