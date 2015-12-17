@@ -3,6 +3,6 @@ check process pdns with pidfile /var/run/pdns.pid
        stop program  = "/etc/init.d/pdns stop"
        if failed host 127.0.0.1 port 53 use type udp then restart
 
-check program checknamed with path "/usr/lib64/nagios/plugins/check_dig -l tourokusareta.domain -H 127.0.0.1 -p 53 -4"
+check program checkpdns with path "/usr/lib64/nagios/plugins/check_dig -l tourokusareta.domain -H 127.0.0.1 -p 53 -4"
         if status != 0 then alert
         if status != 0 for 3 cycles then exec "/etc/init.d/pdns restart"
